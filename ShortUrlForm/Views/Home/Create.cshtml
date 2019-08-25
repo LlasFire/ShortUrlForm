@@ -1,0 +1,20 @@
+﻿@model DataLayer.UrlModel.CreateForm
+
+<h4>Create new short URL easy!</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="LongUrl" class="form-control" placeholder="Your URL"/>
+                <span asp-validation-for="LongUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" id="create_btn" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

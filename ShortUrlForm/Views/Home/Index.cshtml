@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DataLayer.UrlModel.UrlForm>
+
+<p>
+    <a asp-action="Create" id="create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LongUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountOfClics)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="parentForLink">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a href="@item.LongUrl">@item.LongUrl</a>
+            </td>
+            <td>
+                <a href="@item.ShortUrl" class="shortlink" id="@item.ID">@item.ShortUrl</a>
+            </td>
+            <td >
+                @item.CreationDate.ToShortDateString();
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountOfClics)
+            </td>
+            <td>
+                <a class="btn btn-sm" id="" asp-action="Edit" asp-route-id="@item.ID"><i class="far fa-edit"></i></a> |
+                <a class="btn btn-sm" asp-action="Delete" asp-route-id="@item.ID"><i class="fas fa-times"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
